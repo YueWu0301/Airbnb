@@ -2,5 +2,5 @@ title: Airbnb Analysis
 logo: /logo.png
 description: SAS Project - Airbnb Analysis
 github: https://github.com/YueWu0301/Airbnb_analysis/edit/main/_config.yml
-show_downloads: true
+show_downloads: True
 theme: jekyll-theme-minimal
