@@ -1,13 +1,13 @@
-  
+  # Airbnb Analysis
+  **Abstract**:We first conducted an exploratory analysis of the data, then conducted relevant time series analysis, discovered quarterly changes in housing popularity, built multiple models for detailed regression analysis and testing, built a recommendation system based on the data, and, based on reviews, drew a word cloud diagram.
 
-<div class="small">
 
-**Keywords:** EDA, time series analysis, regression, recommendation
+**Keywords**: EDA, time series analysis, regression, recommendation
 system
 
-</div>
 
-# Exploratory Data Analysis
+
+## 1. Exploratory Data Analysis
 
 This section provides an overview of the project’s objective, which is
 to analyze data sourced from the provided dataset Airbnb,which outlines
@@ -17,7 +17,7 @@ room acceptance, and also encapsulates the additional analyses performed
 to further understand the dynamics of the Airbnb market, particularly in
 the context of Sydney listings.
 
-## Market size relation analysis
+### Market size relation analysis
 
 <figure>
 <img src="Yang/Market size.png" id="fig:enter-label" style="width:100.0%"
@@ -30,7 +30,7 @@ The pie chart below show this information for market size in Sydney.
 Note that Sydney city area has the most proterty for booking. The top
 five are Sydney City, Waverley, Pittwater，Randwick, Warringah.
 
-## Room type relation analysis
+### Room type relation analysis
 
 <figure>
 <img src="Yang/Market size in different room type.png"
@@ -66,7 +66,7 @@ hotel shows more popular, and shared room is not very popular. Entire
 home/apt has the most booking number just because the quantity of this
 room type in airbnb is the most available type.
 
-## Time relation series with listing and review number trend by room type
+### Time relation series with listing and review number trend by room type
 
 <figure>
 <img src="Yang/Listing Growth Trend Compare by Room Type.png"
@@ -92,7 +92,7 @@ the check in rate. Especially during the lockdown period, check in
 dropped sharply, but after lockdown terminated at the end of October,
 check in appeared huge rebound.
 
-## Price relation analysis
+### Price relation analysis
 
 <figure>
 <img src="Yang/Median Price Trend Compare by Room Type.png"
@@ -161,7 +161,7 @@ Location</figcaption>
 
 Entire home / apt and hotel has much higher median price than others.
 
-## Features analysis which affect the popularity of room
+### Features analysis which affect the popularity of room
 
 <figure>
 <img src="Yang/Number od reviews.png" id="fig:enter-label"
@@ -177,7 +177,7 @@ where the corresponding point is located, and find out whether it is in
 the urban area is also an important factor affecting the popularity of
 the house;Popular room’s the location is not far away form city.
 
-## Sydney area futhermore analysis
+### Sydney area futhermore analysis
 
 Next,based on previous analysis, Sydney City area has the largest market
 share. We will do some analysis based on this area.
@@ -263,7 +263,7 @@ stable, this trend is still preserved:from 2014-2016, hosts settled in
 Sydney airbnb expand rapidly. From 2017, growth of new hosts settled
 become slowly.
 
-## Trend Analysis
+### Trend Analysis
 
 In this section, we will analyse the demand for Airbnb listings from the
 dataset. We will look at demand over the years since the inception of
@@ -350,7 +350,7 @@ seasonal fluctuation can be linked to several factors:
 To mathematically validate the initial observations, a time series
 analysis was conducted on the review data.
 
-#### Step I:Time Series Decomposition
+### Step I:Time Series Decomposition
 
 1.  **Trend Component and Seasonal Component:** The trend component
     extracted from the time series decomposition indicates a consistent
@@ -363,7 +363,7 @@ analysis was conducted on the review data.
     <img src="Li/ts.3.png" style="width:100.0%" alt="image" /> <span
     id="fig:enter-label" label="fig:enter-label"></span>
 
-#### Step II:Autocorrelation and Partial Autocorrelation
+### Step II:Autocorrelation and Partial Autocorrelation
 
 To further understand the underlying patterns, autocorrelation (ACF) and
 partial autocorrelation (PACF) functions were plotted. These plots help
@@ -372,7 +372,7 @@ identify the dependencies between observations at different lags.
 <img src="Li/ts.2.png" style="width:100.0%" alt="image" /> <span
 id="fig:enter-label" label="fig:enter-label"></span>
 
-#### Step III:ARIMA Model
+### Step III:ARIMA Model
 
 An ARIMA (1,1,1) model was fitted to the time series data to capture the
 autoregressive and moving average components.
@@ -386,7 +386,7 @@ autoregressive and moving average components.
     <img src="Li/ts.5.png" style="width:100.0%" alt="image" /> <span
     id="fig:enter-label" label="fig:enter-label"></span>
 
-#### Step IV: Forecasting Results
+### Step IV: Forecasting Results
 
 The forecast from the ARIMA model aligns well with the original data,
 capturing the upward trend and seasonal fluctuations.
@@ -450,7 +450,7 @@ observe:
 The correlation between price and demand is evident but not very strong.
 And then we’ll test that claim mathematically.
 
-#### Part I:ANOVA Analysis
+### Part I:ANOVA Analysis
 
 To further analyze the price volatility across different months, we
 conducted an ANOVA test to determine if there are significant
@@ -474,7 +474,7 @@ The boxplot above, with outliers removed, visually confirms the
 significant differences in prices across months, with notable peaks and
 troughs aligning with holiday seasons and tourist patterns.
 
-#### Part II:Time series Analysis
+### Part II:Time series Analysis
 
 We also performed a time series analysis to observe the impact of
 seasonality on Airbnb listing prices. By decomposing the time series
@@ -497,7 +497,7 @@ The seasonal component clearly shows recurring patterns within the year,
 indicating higher prices during certain months (e.g., peak holiday
 seasons) and lower prices during off-peak months.
 
-#### Part III:Rolling 12-Month Standard Deviation:
+### Part III:Rolling 12-Month Standard Deviation:
 
 The plot of the rolling 12-month standard deviation shows the changes in
 price volatility over time.
@@ -528,7 +528,7 @@ Dickey-Fuller (ADF) :
 The ADF test results show that there is no significant downward trend in
 price volatility.
 
-## Geographical location analysis
+### Geographical location analysis
 
 This part presents a detailed analysis of location visualization and
 various neighborhood characteristics. The study includes a comprehensive
@@ -784,9 +784,9 @@ This analysis highlights the importance of room type in determining
 housing prices and suggests that while location plays a role, its impact
 is mediated by the types of rooms available in different areas.
 
-# Regression
+## 2.Regression
 
-## Data Preprocess
+### Data Preprocess
 
 First, we carefully clean the data to our desired format.
 
@@ -844,7 +844,7 @@ alt="Regression Pipeline" />
 <figcaption aria-hidden="true">Regression Pipeline</figcaption>
 </figure>
 
-## Linear Regression
+### Linear Regression
 
 First, I directly make linear regression and do hypothetical test, get
 *R*<sup>2</sup> = 0.748 and *A**d**j**R*<sup>2</sup> = 0.745, however, I
@@ -905,7 +905,7 @@ alt="QQ Plot of Residuals" />
 
 So we try other regression models.
 
-## Other Regression
+### Other Regression
 
 We try RandomForest(RF), XGBoost(XGB), Lasso, and Ridge with
 Hyperparameter Slction based on train data. First, we try to figure out
@@ -999,14 +999,14 @@ Fianlly, based on the analysis above, we can conduct:
 
 -   Short rentals bring more reviews
 
-# Recommendation system
+## Recommendation system
 
 This part we implement a content-based recommendation system for housing
 listings. Leveraging natural language processing (NLP) techniques and
 statistical analysis, the system aims to provide personalized
 recommendations based on user preferences and item features.
 
-## Content-Based Features Extraction
+### Content-Based Features Extraction
 
 The recommendation system was designed using a content-based approach,
 focusing on various features of the housing listings.
@@ -1086,7 +1086,7 @@ following resources:
 The average word vector was calculated for terms in the text data,
 representing the user’s preferences and interactions.
 
-## Recommendation Process
+### Recommendation Process
 
 The recommendation system operates by calculating the cosine similarity
 between user features and item features. This similarity measure helps
@@ -1116,8 +1116,8 @@ Here is a demonstration of how our recommend system will work.
 
 Code Repository:  
 The code is stored on GitHub
-at<https://github.com/YueWu0301/Airbnb_analysis>
+at <https://github.com/YueWu0301/Airbnb_analysis>
 
 Website:  
 you can visit our project
-via<https://yuewu0301.github.io/Airbnb_analysis>
+via <https://yuewu0301.github.io/Airbnb_analysis>
