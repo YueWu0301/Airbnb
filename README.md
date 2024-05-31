@@ -1,4 +1,5 @@
   # Airbnb Analysis
+  
   **Abstract**:We first conducted an exploratory analysis of the data, then conducted relevant time series analysis, discovered quarterly changes in housing popularity, built multiple models for detailed regression analysis and testing, built a recommendation system based on the data, and, based on reviews, drew a word cloud diagram.
 
 
